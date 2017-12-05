@@ -1,0 +1,18 @@
+{
+  "name": "yonghua4413/wxpay",
+  "description": "加减乘除法图片验证码",
+  "type": "project",
+  "keywords": [
+    "wechat pay",
+    "微信支付"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "YYHwxpay\\": "src/"
+    }
+  }
+}
