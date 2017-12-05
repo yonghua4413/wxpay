@@ -1,5 +1,5 @@
 # wxpay
-微信支付
+微信支付 扫码支付 jspai支付
 
 ```
 $ composer require yonghua4413/wxpay
