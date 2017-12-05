@@ -81,7 +81,7 @@ $('#pay').on('click', function(){
 	 } 
 });
 </script>
-
+```
 
 
 ## 请选择最新的版本
