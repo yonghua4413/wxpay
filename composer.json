@@ -1,10 +1,10 @@
 {
   "name": "yonghua4413/wxpay",
-  "description": "加减乘除法图片验证码",
+  "description": "微信支付 扫码支付 jspai支付",
   "type": "project",
   "keywords": [
     "wechat pay",
-    "微信支付"
+    "微信支付 扫码支付 jspai支付"
   ],
   "license": "MIT",
   "require": {
