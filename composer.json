@@ -4,7 +4,9 @@
   "type": "project",
   "keywords": [
     "wechat pay",
-    "微信支付 扫码支付 jspai支付"
+    "微信支付",
+    "扫码支付",
+    "jspai支付"
   ],
   "license": "MIT",
   "require": {
