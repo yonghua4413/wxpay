@@ -4,7 +4,7 @@ namespace YYHwxpay;
  * 微信接口调用帮助类
  * @author 254274509@qq.com
  */
-class Weixinhelper {
+class Wxhelper {
     
     /**
      * 获取签名
