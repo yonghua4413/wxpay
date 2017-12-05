@@ -54,18 +54,18 @@ class Wxpay {
         $data['appid'] = $this->app_id;
         $data['mch_id'] = $this->mch_id;
         $data['trade_type'] = $this->trade_type;
-        $data['nonce_str'] = Weixinhelper::get_rand_str(32);
+        $data['nonce_str'] = Wxhelper::get_rand_str(32);
         //合并数组
         $data = array_merge($data, $param);
         
-        $data['sign'] = Weixinhelper::get_sign($data, $this->key);
+        $data['sign'] = Wxhelper::get_sign($data, $this->key);
         //转换为xml
-        $data_xml = Weixinhelper::array_to_xml($data);
+        $data_xml = Wxhelper::array_to_xml($data);
         
-        $response = Weixinhelper::postXmlCurl($data_xml, $url);
+        $response = Wxhelper::postXmlCurl($data_xml, $url);
         
         //返回数据转换为数组
-        $response_data = Weixinhelper::xml_to_array($response);
+        $response_data = Wxhelper::xml_to_array($response);
         
         if(strtoupper($response_data['return_code']) == 'FAIL'){
             return array(
@@ -75,8 +75,6 @@ class Wxpay {
         }
         
         if(strtoupper($response_data['result_code']) == 'FAIL'){
-            //日志
-            $this->log->error($response_data['err_code_des']);
             return array(
                 'error' => 1,
                 'msg' => $response_data['err_code_des']
@@ -100,7 +98,7 @@ class Wxpay {
 		if(!$xml){
 			return array('error' => 1, 'msg' => 'post数据为空');
 		}
-		$wx_back = Weixinhelper::xml_to_array($xml);
+		$wx_back = Wxhelper::xml_to_array($xml);
 		if(empty($wx_back)){
 			return array('error' => 1, 'msg' => 'xml数据解析错误');
 		}
@@ -109,12 +107,11 @@ class Wxpay {
 		}
 		
 		if($wx_back['result_code'] == 'FAIL'){
-		    $this->log->error($wx_back['err_code_des']);
 		    return array('error' => 3, 'data' => $wx_back);
 		}
 		$wx_back_sign = $wx_back['sign'];
 		unset($wx_back['sign']);
-		$checkSign = Weixinhelper::get_sign($wx_back, $this->key);
+		$checkSign = Wxhelper::get_sign($wx_back, $this->key);
         if($checkSign != $wx_back_sign){
             return array('error' => 1, 'msg' => '签名失败');
         }
@@ -128,11 +125,11 @@ class Wxpay {
         $data = array(
             'appId' => $this->app_id,
             'timeStamp' => ''.time(),
-            'nonceStr' => Weixinhelper::get_rand_str(32),
+            'nonceStr' => Wxhelper::get_rand_str(32),
             'package' => 'prepay_id='.$prepay_id,
             'signType' => 'MD5'
         );
-        $data['paySign'] = Weixinhelper::get_sign($data, $this->key);
+        $data['paySign'] = Wxhelper::get_sign($data, $this->key);
         return json_encode($data);
     }
 }
