@@ -18,7 +18,6 @@ $pay_param = array(
     'out_trade_no' => $order_id,
     'spbill_create_ip' => $ip,
     'total_fee' => 1,
-    'openid' => $openid, 
     'notify_url' => '' //异步通知地址
 );
 
